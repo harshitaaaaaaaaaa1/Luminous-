@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToD/ToU Energy Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+    <header class="bg-success text-white p-4 text-center">
+        <h1>ToD/ToU Energy Optimization Platform</h1>
+    </header>
+
+    <main class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <section id="tariff-section" class="card p-4">
+                    <h2>Real-Time Tariff Monitoring</h2>
+                    <div id="current-tariff" class="mt-3">
+                        <p>Current Tariff: <span id="tariff-rate" class="badge bg-primary">$0.12</span>/kWh</p>
+                        <p>Time of Day: <span id="time-of-day" class="badge bg-info">Off-Peak</span></p>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-6 mb-4">
+                <section id="solar-management-section" class="card p-4">
+                    <h2>Solar Energy Management</h2>
+                    <p>Solar Energy Production: <span id="solar-production" class="badge bg-warning">5 kWh</span></p>
+                    <p>Battery Storage Status: <span id="battery-storage" class="badge bg-success">80%</span></p>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <section id="consumption-analytics-section" class="card p-4">
+                    <h2>Energy Consumption Analytics</h2>
+                    <canvas id="energyChart"></canvas>
+                </section>
+            </div>
+            <div class="col-md-6 mb-4">
+                <section id="scheduling-section" class="card p-4">
+                    <h2>Smart Scheduling</h2>
+                    <p>Automatically schedule appliances to run during low-tariff periods:</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scheduleModal">Schedule Appliance</button>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <section id="forecasting-section" class="card p-4">
+                    <h2>Forecasting</h2>
+                    <p>Predicted Energy Usage for the Next Few Days:</p>
+                    <ul id="forecast-list" class="list-group">
+                        <li class="list-group-item">Day 1: 7 kWh</li>
+                        <li class="list-group-item">Day 2: 6 kWh</li>
+                        <li class="list-group-item">Day 3: 5 kWh</li>
+                    </ul>
+                </section>
+            </div>
+            <div class="col-md-6 mb-4">
+                <section id="cost-benefit-section" class="card p-4">
+                    <h2>Cost-Benefit Analysis</h2>
+                    <p>Estimated Savings: <span id="estimated-savings" class="badge bg-success">$30.00</span> per month</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mb-4">
+                <section id="alerts-section" class="card p-4">
+                    <h2>User Notifications & Alerts</h2>
+                    <div id="alerts" class="alert alert-danger d-none"></div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mb-4">
+                <section id="user-feedback-section" class="card p-4">
+                    <h2>User Feedback</h2>
+                    <form id="feedback-form">
+                        <div class="mb-3">
+                            <label for="feedback" class="form-label">Your Feedback</label>
+                            <textarea class="form-control" id="feedback" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit Feedback</button>
+                    </form>
+                    <div id="feedback-message" class="mt-2"></div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Schedule Appliance Modal -->
+    <div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scheduleModalLabel">Schedule Appliance</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="schedule-form">
+                        <div class="mb-3">
+                            <label for="appliance" class="form-label">Select Appliance</label>
+                            <select class="form-select" id="appliance">
+                                <option value="washing-machine">Washing Machine</option>
+                                <option value="dishwasher">Dishwasher</option>
+                                <option value="ev-charger">EV Charger</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="schedule-time" class="form-label">Schedule Time</label>
+                            <input type="datetime-local" class="form-control" id="schedule-time" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submit-schedule">Schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
